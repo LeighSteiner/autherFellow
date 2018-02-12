@@ -18,4 +18,13 @@ router.put('/login', function (req, res, next) {
   .catch(next);
 });
 
+router.delete('/logout', function (req, res, next) {
+  req.session.destroy(); // destroys entire session
+  /* Below are alternatives to the above  
+  delete req.session.userId; // deletes one item on session
+  req.session.userId = null;
+  */
+  res.sendStatus(204);
+});
+
 module.exports = router;
